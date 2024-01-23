@@ -26,7 +26,7 @@ namespace DAL.Repositories
             return true;
         }
 
-        public List<User> GetAllUsers()
+        public IEnumerable<User> GetAllUsers()
         {
             return FakeDB.Users;
         }

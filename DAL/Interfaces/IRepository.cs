@@ -12,7 +12,7 @@ namespace DAL.Interfaces
         public User CreateUser(User user);
         public User? GetUserById(int id);
         public User? GetUserByEmail(string email);
-        public List<User> GetAllUsers();
+        public IEnumerable<User> GetAllUsers();
         public bool UpdateUser(User user);
         public bool DeleteUser(User user);
     }

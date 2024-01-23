@@ -24,7 +24,7 @@ namespace BLL.Services
         {
             User? u = _repository.GetUserByEmail(form.Email);
 
-            if(u is not null)
+            if(u is null)
             {
                 User user = form.ToUser();
                 user.Password = BCrypt.Net.BCrypt.HashPassword(form.Password);
@@ -44,7 +44,7 @@ namespace BLL.Services
             return _repository.GetUserById(id);
         }
 
-        public List<User> GetAll()
+        public IEnumerable<User> GetAll()
         {
             return _repository.GetAllUsers();
         }

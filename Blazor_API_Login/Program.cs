@@ -19,7 +19,7 @@ namespace Blazor_API_Login
 
             builder.Services.AddControllers();
             builder.Services.AddScoped<UserServices>();
-            builder.Services.AddScoped<IRepository, UserRepositoryDB>(sp => new UserRepositoryDB(builder.Configuration.GetConnectionString("DbUsers")));
+            builder.Services.AddScoped<IRepository, UserRepositoryDB>(/*sp => new UserRepositoryDB(builder.Configuration.GetConnectionString("DbUsers"))*/);
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen(c =>

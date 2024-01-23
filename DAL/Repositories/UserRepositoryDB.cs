@@ -12,18 +12,18 @@ namespace DAL.Repositories
 {
     public class UserRepositoryDB : IRepository
     {
-        private readonly string _connectionString;
-        public UserRepositoryDB(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
+        private readonly string _connectionString = "Data Source=GOS-VDI1707\\TFTIC;Initial Catalog=DB_Users_1;Integrated Security=True;Connect Timeout=60;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
+        //public UserRepositoryDB(string connectionString)
+        //{
+        //    _connectionString = connectionString;
+        //}
         public User CreateUser(User user)
         {
             using(SqlConnection conn = new SqlConnection(_connectionString))
             {
                 using(SqlCommand cmd = conn.CreateCommand()) 
                 {
-                    cmd.CommandText = "INSERT INTO Users OUTPUT inserted.id VALUES (@email, @password, @pseudo)";
+                    cmd.CommandText = "INSERT INTO Users OUTPUT inserted.id VALUES (@pseudo, @email, @password )";
 
                     cmd.Parameters.AddWithValue("email", user.Email);
                     cmd.Parameters.AddWithValue("pseudo", user.Pseudo);
@@ -62,7 +62,7 @@ namespace DAL.Repositories
             }
         }
 
-        public List<User> GetAllUsers()
+        public IEnumerable<User> GetAllUsers()
         {
             using(SqlConnection conn = new SqlConnection(_connectionString))
             {
